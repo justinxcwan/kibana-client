@@ -210,7 +210,7 @@ define(function (require) {
   apps.register(function DashboardAppModule() {
     return {
       id: 'dashboard',
-      name: 'Dashboard',
+      name: '仪表盘',
       order: 2
     };
   });

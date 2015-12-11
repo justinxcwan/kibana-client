@@ -12,7 +12,7 @@ define(function (require) {
   // edited by the object editor.
   require('plugins/settings/saved_object_registry').register({
     service: 'savedSearches',
-    title: 'searches'
+    title: '搜索条件'
   });
 
   module.service('savedSearches', function (Promise, config, configFile, es, createNotifier, SavedSearch, kbnUrl) {

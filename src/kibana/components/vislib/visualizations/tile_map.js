@@ -4,7 +4,7 @@ define(function (require) {
     var $ = require('jquery');
     var L = require('leaflet');
     require('leaflet-heat');
-    require('leaflet-chinese');
+    // require('leaflet-chinese');
     require('leaflet-draw');
     require('css!components/vislib/styles/main');
 

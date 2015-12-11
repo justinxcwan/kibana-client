@@ -14,6 +14,7 @@ require.config({
     'angular-elastic': 'bower_components/angular-elastic/elastic',
     'angular-route': 'bower_components/angular-route/angular-route',
     'angular-ui-ace': 'bower_components/angular-ui-ace/ui-ace',
+    'angular-locale_zh-cn': 'bower_components/angular-i18n/angular-locale_zh-cn',
     ace: 'bower_components/ace-builds/src-noconflict/ace',
     'ace-json': 'bower_components/ace-builds/src-noconflict/mode-json',
     angular: 'bower_components/angular/angular',
@@ -26,7 +27,7 @@ require.config({
     file_saver: 'bower_components/FileSaver/FileSaver',
     gridster: 'bower_components/gridster/dist/jquery.gridster',
     'leaflet-heat': 'bower_components/Leaflet.heat/dist/leaflet-heat',
-    'leaflet-chinese': 'bower_components/Leaflet.ChineseTmsProviders/src/leaflet.ChineseTmsProviders',
+    // 'leaflet-chinese': 'bower_components/Leaflet.ChineseTmsProviders/src/leaflet.ChineseTmsProviders',
 
     jquery: 'bower_components/jquery/dist/jquery',
     leaflet: 'bower_components/leaflet/dist/leaflet',
@@ -48,7 +49,7 @@ require.config({
     gridster: ['jquery', 'css!bower_components/gridster/dist/jquery.gridster.css'],
     'angular-route': ['angular'],
     'elasticsearch': ['angular'],
-    'angular-bootstrap': ['angular'],
+    'angular-bootstrap': ['angular', 'angular-locale_zh-cn'],
     'angular-bindonce': ['angular'],
     'ace-json': ['ace'],
     'angular-ui-ace': ['angular', 'ace', 'ace-json'],
@@ -56,9 +57,9 @@ require.config({
     'leaflet-heat': {
       deps: ['leaflet']
     },
-    'leaflet-chinese': {
-      deps: ['leaflet']
-    },
+    // 'leaflet-chinese': {
+    //   deps: ['leaflet']
+    // },
     file_saver: {
       exports: 'saveAs'
     },

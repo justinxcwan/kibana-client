@@ -8,16 +8,16 @@ define(function (require) {
     var vars = {
       searches: {
         service: savedSearches,
-        noun: 'Saved Search',
-        nouns: 'Saved Searches'
+        noun: '搜索语句',
+        nouns: '搜索语句'
       },
       visualizations: {
         service: savedVisualizations,
-        noun: 'Visualization'
+        noun: '图表'
       },
       dashboards: {
         service: savedDashboards,
-        noun: 'Dashboard'
+        noun: '仪表盘'
       }
     };
 
@@ -93,7 +93,7 @@ define(function (require) {
           type = vars[type];
           service = type.service;
           $scope.noun = type.noun;
-          $scope.nouns = type.nouns || type.noun + 's';
+          $scope.nouns = type.nouns || type.noun;
           filterResults();
         });
 

@@ -8,13 +8,13 @@
             input-focus
             kbn-typeahead-input
             ng-model="state.query"
-            placeholder="Search..."
-            aria-label="Search input"
+            placeholder="搜索条件..."
+            aria-label="搜索语句"
             type="text"
             class="form-control">
           <button type="submit"
             ng-disabled="discoverSearch.$invalid"
-            aria-label="Search">
+            aria-label="搜索">
             <span aria-hidden="true" class="fa fa-search"></span></button>
           <!--<button type="button" ng-click="resetQuery()" aria-label="Reset query"><span aria-hidden="true" class="fa fa-ban"></span></button>-->
         </div>
@@ -23,30 +23,30 @@
     </form>
 
     <div class="button-group" role="toolbar">
-      <kbn-tooltip text="New Search" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="新建搜索" placement="bottom" append-to-body="1">
         <button
           ng-click="newQuery()"
-          aria-label="New Search">
+          aria-label="新建搜索">
           <i aria-hidden="true" class="fa fa-file-new-o"></i>
         </button>
       </kbn-tooltip>
-      <kbn-tooltip text="Save Search" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="保存搜索语句" placement="bottom" append-to-body="1">
         <button
           ng-click="configTemplate.toggle('save');"
           ng-class="{active: configTemplate.is('save')}"
           aria-haspopup="true"
           aria-expanded="{{ configTemplate.is('save') }}"
-          aria-label="Save Search">
+          aria-label="保存搜索语句">
           <i aria-hidden="true" class="fa fa-save"></i>
         </button>
       </kbn-tooltip>
-      <kbn-tooltip text="Load Saved Search" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="打开已保存的搜索语句" placement="bottom" append-to-body="1">
         <button
           aria-haspopup="true"
           aria-expanded="{{ configTemplate.is('load') }}"
           ng-click="configTemplate.toggle('load');"
           ng-class="{active: configTemplate.is('load')}"
-          aria-label="Load Saved Search">
+          aria-label="打开已保存的搜索语句">
           <i aria-hidden="true" class="fa fa-folder-open-o"></i>
         </button>
       </kbn-tooltip>
@@ -78,7 +78,7 @@
         <div class="discover-info">
           <span ng-show="opts.savedSearch.id" class="discover-info-title">
             <span bindonce bo-bind="opts.savedSearch.title"></span>
-            <i aria-label="Reload Saved Search" tooltip="Reload Saved Search" ng-click="resetQuery();" class="fa fa-undo small"></i>
+            <i aria-label="重置搜索条件" tooltip="重置搜索条件" ng-click="resetQuery();" class="fa fa-undo small"></i>
           </span>
 
           <strong class="discover-info-hits">{{(hits || 0) | number:0}}</strong>
@@ -90,49 +90,49 @@
           <div ng-show="resultState === 'none'">
               <div class="col-md-10 col-md-offset-1">
 
-                <h1>No results found <i aria-hidden="true" class="fa fa-meh-o"></i></h1>
+                <h1>没有符合搜索条件和时间范围的数据 <i aria-hidden="true" class="fa fa-meh-o"></i></h1>
 
                 <p>
-                  Unfortunately I could not find any results matching your search. I tried really hard. I looked all over the place and frankly, I just couldn't find anything good. Help me, help you. Here's some ideas:
+                  可能有如下一些原因，请参考修改搜索条件或者时间范围:
                 </p>
 
                 <div class="shard-failures" ng-show="failures">
-                  <h3>Shard Failures</h3>
-                  <p>The following shard failures ocurred:</p>
+                  <h3>Elasticsearch系统出错</h3>
+                  <p>发生下述错误:</p>
                   <ul>
-                    <li ng-repeat="failure in failures | limitTo: failuresShown"><strong>Index:</strong> {{failure.index}} <strong>Shard:</strong> {{failure.shard}} <strong>Reason:</strong> {{failure.reason}} </li>
+                    <li ng-repeat="failure in failures | limitTo: failuresShown"><strong>索引:</strong> {{failure.index}} <strong>分片:</strong> {{failure.shard}} <strong>原因:</strong> {{failure.reason}} </li>
                   </ul>
-                  <a ng-click="showAllFailures()" ng-if="failures.length > failuresShown" title="Show More">Show More</a>
-                  <a ng-click="showLessFailures()" ng-if="failures.length === failuresShown && failures.length > 5" title="Show Less">Show Less</a>
+                  <a ng-click="showAllFailures()" ng-if="failures.length > failuresShown" title="Show More">展开详细信息</a>
+                  <a ng-click="showLessFailures()" ng-if="failures.length === failuresShown && failures.length > 5" title="Show Less">只显示概要信息</a>
                 </div>
 
                 <div ng-show="opts.timefield">
                   <p>
-                    <h3>Expand your time range</h3>
-                    <p>I see you are looking at an index with a date field. It is possible your query does not match anything in the current time range, or that there is no data at all in the currently selected time range. Click the button below to open the time picker. For future reference you can open the time picker by clicking the <a class="btn btn-xs navbtn" ng-click="toggleTimepicker(); toggledTimepicker = !toggledTimepicker" aria-expanded="{{toggledTimepicker}}" aria-label="time picker">time picker <i aria-hidden="true" class="fa fa-clock-o"></i></a> in the top right corner of your screen.
+                    <h3>扩大搜索的时间范围</h3>
+                    <p>有可能只是当前时间范围内没有数据。任何时间都可以点击在屏幕的右上角的 <a class="btn btn-xs navbtn" ng-click="toggleTimepicker(); toggledTimepicker = !toggledTimepicker" aria-expanded="{{toggledTimepicker}}" aria-label="time picker">时间选择器 <i aria-hidden="true" class="fa fa-clock-o"></i></a> 改变搜索时间范围。
                   </p>
                 </div>
 
-                <h3>Refine your query</h3>
+                <h3>修改搜索条件</h3>
                 <p>
-                  The search bar at the top uses Elasticsearch's support for Lucene <a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax" target="_blank">Query String syntax</a>. Let's say we're searching web server logs that have been parsed into a few fields.
+                  Elasticsearch的搜索语法遵从Lucene的<a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax" target="_blank">搜索语句标准</a>. 里面是几个搜索语法例子：
                 </p>
 
                 <p>
-                  <h4>Examples:</h4>
-                  Find requests that contain the number 200, in any field:
+                  <h4>例子</h4>
+                  搜索任何字段包含数字200的所有日志：
                   <pre>200</pre>
 
-                  Or we can search in a specific field. Find 200 in the status field:
+                  只搜索status字段保护200的日志：
                   <pre>status:200</pre>
 
-                  Find all status codes between 400-499:
+                  搜索status字段值范围从400到499的日志：
                   <pre>status:[400 TO 499]</pre>
 
-                  Find status codes 400-499 with the extension php:
+                  搜索status范围在400-499之间，而且extension字段值是php:
                   <pre>status:[400 TO 499] AND extension:PHP</pre>
 
-                  Or HTML
+                  或者加上extension是html的日志
                   <pre>status:[400 TO 499] AND (extension:php OR extension:html)</pre>
                 </p>
 
@@ -142,7 +142,7 @@
           <!-- loading -->
           <div ng-show="resultState === 'loading'">
             <div class="discover-overlay">
-              <h2>Searching</h2>
+              <h2>搜索中</h2>
               <div class="spinner large"></div>
               <div ng-show="fetchStatus">{{fetchStatus.complete}}/{{fetchStatus.total}}</div>
             </div>
@@ -191,9 +191,8 @@
 
               <div ng-if="rows.length == opts.sampleSize" class="discover-table-footer">
                 <center>
-                  These are the first {{opts.sampleSize}} documents matching
-                  your search, refine your search to see others.
-                  <a ng-click="toTop()" title="Back to top">Back to top.</a>
+                  返回符合搜索条件的头 {{opts.sampleSize}} 条日志， 修改搜索条件返回其他日志。
+                  <a ng-click="toTop()" title="Back to top">返回页首。</a>
                 </center>
               </div>
             </div>
