@@ -10,7 +10,7 @@ define(function (require) {
 
     var Chart = Private(require('components/vislib/visualizations/_chart'));
     var defaultMapZoom = 5;
-    var defaultMapCenter = [61.2180556, -149.9002778];
+    var defaultMapCenter = [31.59, 120.29];
 
     // Convenience function to turn around the LngLat recieved from ES
     function cloneAndReverse(arr) {
@@ -76,19 +76,12 @@ define(function (require) {
           self.addLatLng(self.geoJson);
 
           var div = $(this).addClass('tilemap');
-          // var tileLayer = L.tileLayer('http://emap{s}.mapabc.com/mapabc/maptile?&x={x}&y={y}&z={z}', {
-          // // var tileLayer = L.tileLayer('https://otile{s}-s.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
-          //   attribution: 'Tiles by <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
-          //     'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-          //     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-          //   subdomains: '1234'
-          // });
-        
 
+          var tileLayer = L.tileLayer('/map/{z}/{x}/{y}.png');
+          // var tileLayer = L.tileLayer('http://emap{s}.mapabc.com/mapabc/maptile?&x={x}&y={y}&z={z}');
 
-          var normalm = L.tileLayer.chinaProvider('GaoDe.Normal.Map',{maxZoom:18,minZoom:3});
-
-          var tileLayer = normalm;
+          // var normalm = L.tileLayer.chinaProvider('GaoDe.Normal.Map',{maxZoom:18,minZoom:3});
+          // var tileLayer = normalm;
 
           var drawOptions = {draw: {}};
           _.each(['polyline', 'polygon', 'circle', 'marker', 'rectangle'], function (drawShape) {
@@ -105,9 +98,9 @@ define(function (require) {
           });
 
           var mapOptions = {
-            minZoom: 3,
-            maxZoom: 18,
-            layers: [normalm],
+            minZoom: 1,
+            maxZoom: 8,
+            layers: [tileLayer],
             center: self._attr.mapCenter,
             zoom: self._attr.mapZoom,
             noWrap: true,
