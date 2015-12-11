@@ -213,7 +213,7 @@ define(function (require) {
         return docSource.doCreate(body)
         .then(setId)
         .catch(function (err) {
-          var confirmMessage = 'Are you sure you want to overwrite this?';
+          var confirmMessage = '确定要进行覆盖？';
           if (_.deepGet(err, 'origError.status') === 409 && window.confirm(confirmMessage)) {
             return docSource.doIndex(body).then(setId);
           }

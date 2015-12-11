@@ -67,7 +67,7 @@ define(function (require) {
   return {
     order: 2,
     name: 'advanced',
-    display: 'Advanced',
+    display: '高级',
     url: '#/settings/advanced'
   };
 });

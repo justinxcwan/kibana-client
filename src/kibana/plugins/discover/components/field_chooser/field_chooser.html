@@ -21,7 +21,7 @@
   </div>
 
   <div class="sidebar-list-header">
-    <h5>Selected Fields</h5>
+    <h5>已选择字段</h5>
   </div>
   <ul class="list-unstyled discover-selected-fields" >
     <discover-field ng-repeat="field in fields.raw|filter:{display:true}">
@@ -29,7 +29,7 @@
   </ul>
 
   <div class="sidebar-list-header sidebar-item">
-    <h5>Available Fields
+    <h5>选择字段
       <i
         ng-class="{ 'fa-chevron-right': !showFields, 'fa-chevron-down': showFields }"
         ng-click="showFields = !showFields"
@@ -39,7 +39,7 @@
         ng-class="{ 'btn-default': !filter.active, 'btn-success': filter.active, 'hidden-xs': !showFields, 'hidden-sm': !showFields }"
         class="btn btn-xs btn-default pull-right discover-field-filter-toggle"
         ng-click="showFilter = !showFilter"
-        aria-label="Field Settings"
+        aria-label="字段设置"
         aria-haspopup="true"
         aria-expanded="{{showFilter}}">
         <i aria-hidden="true" class="fa fa-gear"></i>
@@ -54,7 +54,7 @@
     <form role="form" class="discover-field-details">
       <div class="form-group">
         <label>
-          Analyzed
+          已分词
         </label>
         <select
           ng-options="opt.value as opt.label for opt in filter.boolOpts"
@@ -64,7 +64,7 @@
       </div>
       <div class="form-group">
         <label>
-          Indexed
+          已索引
         </label>
         <select
           ng-options="opt.value as opt.label for opt in filter.boolOpts"
@@ -74,7 +74,7 @@
       </div>
       <div class="form-group">
         <label>
-          Type
+          类型
         </label>
         <select
           ng-options="field as field for field in fieldTypes"
@@ -84,14 +84,14 @@
       </div>
       <div class="form-group">
         <label>
-          Field name
+          字段名
         </label>
         <input type="text" class="form-control" ng-model="filter.vals.name">
       </div>
       <div class="form-group">
         <label>
           <input type="checkbox" ng-model="filter.vals.missing">
-          Hide Missing Fields
+          不显示无值的字段
         </label>
       </div>
     </form>
@@ -99,7 +99,7 @@
       ng-click="filter.reset()"
       ng-disabled="!filter.active"
       class="sidebar-item-button danger ng-scope">
-      Reset Filters
+      重置过滤条件
     </div>
   </div>
 
@@ -108,7 +108,7 @@
     ng-class="{ 'hidden-sm': !showFields, 'hidden-xs': !showFields }"
     class="list-unstyled sidebar-well discover-popular-fields">
     <li class="sidebar-item sidebar-list-header">
-      <h6>Popular</h6>
+      <h6>常用字段</h6>
     </li>
     <discover-field
       ng-repeat="field in popularFields | filter:filter.isFieldFiltered">

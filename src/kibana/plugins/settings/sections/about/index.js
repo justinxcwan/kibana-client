@@ -16,7 +16,7 @@ define(function (require) {
   return {
     order: Infinity,
     name: 'about',
-    display: 'About',
+    display: '关于',
     url: '#/settings/about'
   };
 });

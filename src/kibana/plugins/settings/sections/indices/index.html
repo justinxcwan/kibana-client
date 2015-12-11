@@ -2,14 +2,14 @@
   <div class="sidebar-list">
     <div class="sidebar-list-header">
       <h5>
-        Index Patterns&nbsp;
+        匹配索引
         <a
           ng-if="edittingId"
           href="#/settings/indices"
           class="btn btn-primary btn-xs"
           aria-label="Add New">
-          <span class="sr-only">Add New</span>
-          <i aria-hidden="true" class="fa fa-plus"></i> Add New
+          <span class="sr-only">添加</span>
+          <i aria-hidden="true" class="fa fa-plus"></i> 添加
         </a>
       </h5>
     </div>
@@ -18,7 +18,7 @@
         ng-if="!defaultIndex"
         class="sidebar-item">
         <div class="sidebar-item-title full-title">
-            <span class="label label-warning">Warning</span> No default index pattern. You must select or create one to continue.
+            <span class="label label-warning">警告</span> 没有配置缺省索引。请选择或者添加一个。
         </div>
       </li>
       <li

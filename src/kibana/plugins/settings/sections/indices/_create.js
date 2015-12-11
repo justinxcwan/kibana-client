@@ -21,14 +21,14 @@ define(function (require) {
 
     // this and child scopes will write pattern vars here
     var index = $scope.index = {
-      name: 'logstash-*',
+      name: 'logs_*',
 
       isTimeBased: true,
       nameIsPattern: false,
       sampleCount: 5,
       nameIntervalOptions: intervals,
 
-      fetchFieldsError: 'Loading'
+      fetchFieldsError: '加载中'
     };
 
     index.nameInterval = _.find(index.nameIntervalOptions, { name: 'daily' });
@@ -197,12 +197,12 @@ define(function (require) {
 
       // we don't have enough info to continue
       if (!index.name) {
-        fetchFieldsError = 'Set an index name first';
+        fetchFieldsError = '索引名为空';
         return;
       }
 
       if (useIndexList && !index.nameInterval) {
-        fetchFieldsError = 'Select the interval at which your indices are populated.';
+        fetchFieldsError = '请先选择时间间隔';
         return;
       }
 
@@ -214,7 +214,7 @@ define(function (require) {
         .catch(function (err) {
           // TODO: we should probably display a message of some kind
           if (err instanceof MissingIndices) {
-            fetchFieldsError = 'Unable to fetch mapping. Do you have indices matching the pattern?';
+            fetchFieldsError = '取不到字段列表，索引名称写错？';
             return [];
           }
 
@@ -254,23 +254,23 @@ define(function (require) {
       index.patternErrors = [];
       index.samples = null;
       index.existing = null;
-      index.fetchFieldsError = 'Loading';
+      index.fetchFieldsError = '加载中';
     }
 
     function getPatternDefault(interval) {
       switch (interval) {
       case 'hours':
-        return '[logstash-]YYYY.MM.DD.HH';
+        return '[logs_]YYYYMMDDHH';
       case 'days':
-        return '[logstash-]YYYY.MM.DD';
+        return '[logs_]YYYYMMDD';
       case 'weeks':
-        return '[logstash-]GGGG.WW';
+        return '[logs_]GGGGWW';
       case 'months':
-        return '[logstash-]YYYY.MM';
+        return '[logs_]YYYYMM';
       case 'years':
-        return '[logstash-]YYYY';
+        return '[logs_]YYYY';
       default:
-        return 'logstash-*';
+        return 'logs_*';
       }
     }
 

@@ -27,7 +27,7 @@ define(function (require) {
           $scope.setMode($scope.mode);
         };
 
-        $scope.format = 'MMMM Do YYYY, HH:mm:ss.SSS';
+        $scope.format = 'YYYY-MM-DD HH:mm:ss.SSS';
         $scope.modes = ['quick', 'relative', 'absolute'];
         $scope.activeTab = $scope.activeTab || 'filter';
 

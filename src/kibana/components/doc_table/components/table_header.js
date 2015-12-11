@@ -23,7 +23,7 @@ define(function (require) {
         };
 
         $scope.tooltip = function (column) {
-          if (!sortableField(column)) return ''; else return 'Sort by ' + shortDotsFilter(column);
+          if (!sortableField(column)) return ''; else return '按 ' + shortDotsFilter(column) + ' 排序';
         };
 
         $scope.canRemove = function (name) {

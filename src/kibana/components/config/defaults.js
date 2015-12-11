@@ -5,17 +5,17 @@ define(function () {
     return {
       'query:queryString:options': {
         value: '{ "analyze_wildcard": true }',
-        description: 'Options for the lucene query string parser',
+        description: 'Lucene搜索语句配置',
         type: 'json'
       },
       'sort:options': {
         value: '{ "unmapped_type": "boolean" }',
-        description: 'Options the Elasticsearch sort parameter',
+        description: 'Elasticsearch排序参数',
         type: 'json'
       },
       'dateFormat': {
-        value: 'MMMM Do YYYY, HH:mm:ss.SSS',
-        description: 'When displaying a pretty formatted date, use this format',
+        value: 'YYYY-MM-DD HH:mm:ss.SSS',
+        description: '日期时间显示格式',
       },
       'dateFormat:scaled': {
         type: 'json',
@@ -29,69 +29,66 @@ define(function () {
           '  ["P1DT", "YYYY-MM-DD"],\n' +
           '  ["P1YT", "YYYY"]\n' +
           ']',
-        description: 'Values that define the format used in situations where timebased' +
-        ' data is rendered in order, and formatted timestamps should adapt to the' +
-        ' interval between measurements. Keys are ISO 8601 intervals:' +
+        description: '定义如何缩写时间显示串。允许的键值参见 ISO 8601 标准：' +
         ' http://en.wikipedia.org/wiki/ISO_8601#Time_intervals'
       },
       'defaultIndex': {
         value: null,
-        description: 'The index to access if no index is set',
+        description: '缺省索引名',
       },
       'metaFields': {
-        value: ['_source', '_id', '_type', '_index'],
-        description: 'Fields that exist outside of _source to merge into our document when displaying it',
+        value: ['_id', '_type'],
+        description: '需要显示的_source之外的字段',
       },
       'discover:sampleSize': {
         value: 500,
-        description: 'The number of rows to show in the table',
+        description: '表格中最大显示日志数',
       },
       'fields:popularLimit': {
         value: 10,
-        description: 'The top N most popular fields to show',
+        description: '需要显示字段中最常见的N个值',
       },
       'format:numberPrecision': {
         value: 3,
-        description: 'Round numbers to this many decimal places',
+        description: '数字精度',
       },
       'histogram:barTarget': {
         value: 50,
-        description: 'Attempt to generate around this many bar when using "auto" interval in date histograms',
+        description: '时间柱状图每单位最小时间范围',
       },
       'histogram:maxBars': {
         value: 100,
-        description: 'Never show more than this many bar in date histograms, scale values if needed',
+        description: '时间柱状图最多显示单位',
       },
       'visualization:tileMap:maxPrecision': {
-        value: 7,
-        description: 'The maximum geoHash precision displayed on tile maps: 7 is high, 10 is very high, ' +
-        '12 is the max. Explanation of cell dimensions: http://www.elastic.co/guide/en/elasticsearch/reference/current/' +
+        value: 12,
+        description: '地图范围查找允许的最大精度：7代表高精度、10为很高精度、' +
+        '12为最高精度。详细解释参见：http://www.elastic.co/guide/en/elasticsearch/reference/current/' +
         'search-aggregations-bucket-geohashgrid-aggregation.html#_cell_dimensions_at_the_equator',
       },
       'csv:separator': {
         value: ',',
-        description: 'Separate exported values with this string',
+        description: '导出数据时使用的分割符',
       },
       'csv:quoteValues': {
         value: true,
-        description: 'Should values be quoted in csv exports?',
+        description: '使用CSV作为导出格式？',
       },
       'history:limit': {
         value: 10,
-        description: 'In fields that have history (e.g. query inputs), show this many recent values',
+        description: '显示历史纪录最多条数',
       },
       'shortDots:enable': {
         value: false,
-        description: 'Shorten long fields, for example, instead of foo.bar.baz, show f.b.baz',
+        description: '缩短长字符串。比如把 foo.bar.baz 显示成 f.b.baz',
       },
       'truncate:maxHeight': {
         value: 115,
-        description: 'The maximum height that a cell in a table should occupy. Set to 0 to disable truncation.'
+        description: '表格每行最高高度。设置成0关闭自动截断功能。'
       },
       'indexPattern:fieldMapping:lookBack': {
         value: 5,
-        description: 'For index patterns containing timestamps in their names, look for this many recent matching ' +
-          'patterns from which to query the field mapping.'
+        description: '如果索引名包括时间，系统查找字段类型映射时，此配置项决定最多找最近几天的索引。'
       },
       'format:defaultTypeMap': {
         type: 'json',
@@ -104,28 +101,28 @@ define(function () {
           '  "_default_": { "id": "string", "params": {} }',
           '}',
         ].join('\n'),
-        description: 'Map of the format name to use by default for each field type. ' +
-          '"_default_" is used if the field type is not mentioned explicitly.'
+        description: '每种字段类型对应的显示配置名称 ' +
+          '如果没有配置，使用"_default_"。'
       },
       'format:number:defaultPattern': {
         type: 'string',
         value: '0,0.[000]',
-        description: 'Default numeral format for the "number" format'
+        description: '数值类型字段的显示方式'
       },
       'format:bytes:defaultPattern': {
         type: 'string',
         value: '0,0.[000]b',
-        description: 'Default numeral format for the "bytes" format'
+        description: '字节类型字段的显示方式'
       },
       'format:percent:defaultPattern': {
         type: 'string',
         value: '0,0.[000]%',
-        description: 'Default numeral format for the "percent" format'
+        description: '百分比类型字段的显示方式'
       },
       'format:currency:defaultPattern': {
         type: 'string',
-        value: '($0,0.[00])',
-        description: 'Default numeral format for the "currency" format'
+        value: '(¥0,0.[00])',
+        description: '货币类型字段的显示方式'
       }
     };
   };

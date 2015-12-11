@@ -10,27 +10,27 @@ define(function (require) {
         {
           name: 'hours',
           startOf: 'hour',
-          display: 'Hourly'
+          display: '每小时'
         },
         {
           name: 'days',
           startOf: 'day',
-          display: 'Daily'
+          display: '每天'
         },
         {
           name: 'weeks',
           startOf: 'isoWeek',
-          display: 'Weekly'
+          display: '每周'
         },
         {
           name: 'months',
           startOf: 'month',
-          display: 'Monthly'
+          display: '每月'
         },
         {
           name: 'years',
           startOf: 'year',
-          display: 'Yearly'
+          display: '每年'
         }
       ]
     });

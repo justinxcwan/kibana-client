@@ -46,7 +46,7 @@ define(function (require) {
 
   return {
     name: 'indices',
-    display: 'Indices',
+    display: '索引',
     url: '#/settings/indices',
   };
 });
