@@ -26,6 +26,23 @@ module.exports = function (grunt) {
         inlineText: true,
         skipPragmas: true,
 
+        // uglify2: {
+        //     //Example of a specialized config. If you are fine
+        //     //with the default options, no need to specify
+        //     //any of these properties.
+        //     output: {
+        //         beautify: true
+        //     },
+        //     compress: {
+        //         sequences: false,
+        //         global_defs: {
+        //             DEBUG: false
+        //         }
+        //     },
+        //     warnings: true,
+        //     mangle: false
+        // },
+
         done: function (done, output) {
           var analysis = require('rjs-build-analysis');
           var tree = analysis.parse(output);
@@ -50,6 +67,10 @@ module.exports = function (grunt) {
               return done(new Error('r.js build contains relative modules, duplicates probably exist'));
             }
           }
+
+          // var execFile = Promise.promisify(child_process.execFile);
+          // var args = ['-o', this.dir + '/index.min.js', this.dir + '/index.js'];
+          // execFile('uglifyjs', args);
 
           done();
         }

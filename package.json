@@ -52,13 +52,15 @@
     "glob": "^4.3.2",
     "http-auth": "^2.2.5",
     "jade": "^1.8.2",
+    "jit-grunt": "^0.9.1",
     "js-yaml": "^3.2.5",
     "lodash": "^2.4.1",
     "request": "^2.40.0",
     "requirefrom": "^0.2.0",
     "semver": "^4.2.0",
     "serve-favicon": "^2.2.0",
-    "through": "^2.3.6"
+    "through": "^2.3.6",
+    "time-grunt": "^1.2.2"
   },
   "devDependencies": {
     "bower": "^1.4.1",
