@@ -20,7 +20,7 @@ Please make sure you have signed the [Contributor License Agreement](http://www.
 - Install grunt and bower globally (as root if not using nvm)
 
   ```sh
-  npm install -g grunt-cli bower
+  npm install -g grunt-cli bower uglify-js
   ```
 
 - Clone the kibana repo and move into it

@@ -68,9 +68,19 @@ module.exports = function (grunt) {
             }
           }
 
-          // var execFile = Promise.promisify(child_process.execFile);
-          // var args = ['-o', this.dir + '/index.min.js', this.dir + '/index.js'];
-          // execFile('uglifyjs', args);
+          //TODO Temporary hacks to uglify index.js
+          var join = require('path').join;
+          var path = join(grunt.config.get('build'), 'kibana', 'public');
+
+          console.log('uglifying ' + join(path, 'index.js'));
+
+          var args = ['-o', join(path, 'index.min.js'), join(path, 'index.js')];
+
+          var Promise = require('bluebird');
+          var child_process = require('child_process');
+          var execFile = Promise.promisify(child_process.execFile);
+          
+          execFile('uglifyjs', args);
 
           done();
         }

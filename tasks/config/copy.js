@@ -72,7 +72,14 @@ module.exports = function (grunt) {
           cwd: '<%= build %>/src',
           src: 'config',
           dest: '<%= build %>/dist/kibana/src/public'
-        },        {
+        },   
+        {
+          expand: true,
+          cwd: '<%= build %>/src/bower_components/ace-builds/src-min-noconflict',
+          src: 'worker-json.js',
+          dest: '<%= build %>/dist/kibana/src/public'
+        },   
+        {
           expand: true,
           cwd: '<%= server %>/config/',
           src: 'kibana.yml',
