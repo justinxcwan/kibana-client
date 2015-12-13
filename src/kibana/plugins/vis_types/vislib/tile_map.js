@@ -8,10 +8,9 @@ define(function (require) {
 
     return new VislibVisType({
       name: 'tile_map',
-      title: 'Tile map',
+      title: '地图',
       icon: 'fa-map-marker',
-      description: 'Your source for geographic maps. Requires an elasticsearch geo_point field. More specifically, a field ' +
-       'that is mapped as type:geo_point with latitude and longitude coordinates.',
+      description: '显示和地理位置对应的数据。需要Elasticsearch中有geo_point类型的字段。',
       params: {
         defaults: {
           mapType: 'Scaled Circle Markers',

@@ -5,10 +5,9 @@ define(function (require) {
 
     return new VislibVisType({
       name: 'line',
-      title: 'Line chart',
+      title: '线图',
       icon: 'fa-line-chart',
-      description: 'Often the best chart for high density time series. Great for comparing one series to another. ' +
-        'Be careful with sparse sets as the connection between points can be misleading.',
+      description: '适合显示高密度的时间序列、或者对两序列进行比较。',
       params: {
         defaults: {
           shareYAxis: true,

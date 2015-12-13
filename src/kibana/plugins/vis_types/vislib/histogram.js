@@ -5,10 +5,9 @@ define(function (require) {
 
     return new VislibVisType({
       name: 'histogram',
-      title: 'Vertical bar chart',
+      title: '直方图',
       icon: 'fa-bar-chart',
-      description: 'The goto chart for oh-so-many needs. Great for time and non-time data. Stacked or grouped, ' +
-      'exact numbers or percentages. If you are not sure which chart your need, you could do worse than to start here.',
+      description: '适合多种场景、能显示时间序列或者非时间序列数据。',
       params: {
         defaults: {
           shareYAxis: true,

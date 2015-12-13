@@ -13,9 +13,8 @@ define(function (require) {
     // Vis object of this type.
     return new TemplateVisType({
       name: 'metric',
-      title: 'Metric',
-      description: 'One big number for all of your one big number needs. Perfect for show ' +
-        'a count of hits, or the exact average a numeric field.',
+      title: '数值',
+      description: '显示单条数值。',
       icon: 'fa-calculator',
       template: require('text!plugins/metric_vis/metric_vis.html'),
       params: {
