@@ -3,9 +3,9 @@
   <p>
     <div class="form-group">
       <label>
-        Embed this visualization.
+        嵌入此图表
         <kbn-clipboard copy="conf.shareData().embed"></kbn-clipboard>
-        <small>Add to your html source. Note all clients must still be able to access kibana</small>
+        <small>请把如下代码加入你的网站源码中，并确定网站访客能访问本站点。</small>
       </label>
       <div class="form-control" disabled>{{conf.shareData().embed}}</div>
     </div>
@@ -14,7 +14,7 @@
   <p>
     <div class="form-group">
       <label>
-        Share a link
+        分享图表链接
         <kbn-clipboard copy="conf.shareData().link"></kbn-clipboard>
       </label>
       <div class="form-control" disabled>{{conf.shareData().link}}</div>

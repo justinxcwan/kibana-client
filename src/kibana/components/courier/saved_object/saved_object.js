@@ -248,7 +248,7 @@ define(function (require) {
         .catch(function (err) {
           // record exists, confirm overwriting
           if (_.deepGet(err, 'origError.status') === 409) {
-            var confirmMessage = 'Are you sure you want to overwrite ' + self.title + '?';
+            var confirmMessage = '确定要覆盖"' + self.title + '"的旧版本?';
 
             return safeConfirm(confirmMessage).then(
               function () {

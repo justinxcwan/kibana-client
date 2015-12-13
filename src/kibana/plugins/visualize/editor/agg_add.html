@@ -1,5 +1,5 @@
 <div ng-show="add.form" class="vis-editor-agg-add-schemas">
-  <label>Select {{ groupName }} type</label>
+  <label>选择 {{ groupName }} 类型</label>
   <ul class="form-group list-group list-group-menu">
     <li
       ng-repeat="schema in availableSchema"
@@ -19,13 +19,13 @@
 
   <div ng-if="!add.form">
     <div class="vis-editor-agg-wide-btn-add" ng-if="groupName !== 'buckets' || !stats.count">
-      <i aria-hidden="true" class="fa fa-plus"></i> Add {{ groupName }}
+      <i aria-hidden="true" class="fa fa-plus"></i> 添加 {{ groupName }}
     </div>
     <div class="vis-editor-agg-wide-btn-add" ng-if="groupName === 'buckets' && stats.count > 0">
-      <i aria-hidden="true" class="fa fa-code-fork"></i> Add sub-{{ groupName }}
+      <i aria-hidden="true" class="fa fa-code-fork"></i> 添加 子-{{ groupName }}
     </div>
   </div>
   <div class="vis-editor-agg-wide-btn-add" ng-if="add.form">
-    Cancel
+    取消
   </div>
 </div>

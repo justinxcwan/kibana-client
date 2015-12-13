@@ -3,7 +3,7 @@
 
   <!-- open/close editor -->
   <button
-    aria-label="{{ editorOpen ? 'Close Editor' : 'Open Editor' }}"
+    aria-label="{{ editorOpen ? '关闭编辑器' : '打开编辑器' }}"
     ng-click="editorOpen = !editorOpen"
     type="button"
     class="btn btn-default btn-xs vis-editor-agg-header-toggle">
@@ -29,11 +29,11 @@
   <div class="vis-editor-agg-header-controls btn-group">
     <!-- up button -->
     <button
-      aria-label="Increase Priority"
+      aria-label="提高优先级"
       ng-if="stats.count > 1"
       ng-class="{ disabled: $first }"
       ng-click="moveUp(agg)"
-      tooltip="Increase Priority"
+      tooltip="提高优先级"
       tooltip-append-to-body="true"
       type="button"
       class="btn btn-xs btn-default">
@@ -42,11 +42,11 @@
 
     <!-- down button -->
     <button
-      aria-lebl="Decrease Priority"
+      aria-lebl="降低优先级"
       ng-if="stats.count > 1"
       ng-class="{ disabled: $last }"
       ng-click="moveDown(agg)"
-      tooltip="Decrease Priority"
+      tooltip="降低优先级"
       tooltip-append-to-body="true"
       type="button"
       class="btn btn-xs btn-default">
@@ -56,10 +56,10 @@
     <!-- remove button -->
     <button
       ng-if="canRemove(agg)"
-      aria-label="Remove Dimension"
+      aria-label="删除此纬度"
       ng-if="stats.count > stats.min"
       ng-click="remove(agg)"
-      tooltip="Remove Dimension"
+      tooltip="删除此纬度"
       tooltip-append-to-body="true"
       type="button"
       class="btn btn-xs btn-danger">

@@ -23,7 +23,7 @@ define(function (require) {
         id: opts.id,
         indexPattern: opts.indexPattern,
         defaults: {
-          title: 'New Visualization',
+          title: '未命名的图表',
           visState: (function () {
             if (!opts.type) return null;
             var def = {};

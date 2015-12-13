@@ -1,17 +1,17 @@
 <form role="form">
   <div class="form-group finder-form">
     <div class="finder-form-options">
-      <a class="small" ng-click="manageObject(type)">管理 {{type}}</a>
+      <a class="small" ng-click="manageObject(type)">管理 {{noun}}</a>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <input
       input-focus
       ng-model="filter"
-      ng-attr-placeholder="{{noun}} Filter"
+      ng-attr-placeholder="请输入{{noun}}名称..."
       class="form-control"
       name="filter"
       type="text">
-      <span class="finder-hit-count"><strong>{{hitCount}}</strong> {{type}}</span>
+      <span class="finder-hit-count"><strong>{{hitCount}}</strong> {{noun}}</span>
   </div>
 </form>
 <paginate list="hits | orderBy:'title'" per-page="5">

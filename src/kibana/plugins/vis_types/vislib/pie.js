@@ -5,10 +5,10 @@ define(function (require) {
 
     return new VislibVisType({
       name: 'pie',
-      title: 'Pie chart',
+      title: '饼图',
       icon: 'fa-pie-chart',
-      description: 'Pie charts are ideal for displaying the parts of some whole. For example, sales percentages by department.' +
-       'Pro Tip: Pie charts are best used sparingly, and with no more than 7 slices per pie.',
+      description: '饼图可用来显示部分和整体的关系，比如每个部门所占的销售比例。' +
+       '为了让饼图易读，一般不建议分成太多片，比如超过7片。',
       params: {
         defaults: {
           shareYAxis: true,
@@ -24,7 +24,7 @@ define(function (require) {
         {
           group: 'metrics',
           name: 'metric',
-          title: 'Slice Size',
+          title: '切片大小',
           min: 1,
           max: 1,
           aggFilter: ['sum', 'count', 'cardinality'],
@@ -36,7 +36,7 @@ define(function (require) {
           group: 'buckets',
           name: 'segment',
           icon: 'fa fa-scissors',
-          title: 'Split Slices',
+          title: '多级圆环',
           min: 0,
           max: Infinity,
           aggFilter: '!geohash_grid'
@@ -45,7 +45,7 @@ define(function (require) {
           group: 'buckets',
           name: 'split',
           icon: 'fa fa-th',
-          title: 'Split Chart',
+          title: '多子图表',
           mustBeFirst: true,
           min: 0,
           max: 1,

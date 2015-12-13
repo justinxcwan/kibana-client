@@ -100,7 +100,7 @@ define(function (require) {
 
         $scope.notFound = $routeParams.notFound;
 
-        $scope.title = service.type;
+        $scope.title = $routeParams.id;//service.type;
 
         es.get({
           index: config.file.kibana_index,

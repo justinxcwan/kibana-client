@@ -2,14 +2,14 @@
   <kbn-settings-objects class="container">
     <div class="header">
       <h2 class="title">编辑已保存的对象</h2>
-      <button class="btn btn-default controls" ng-click="exportAll()"><i aria-hidden="true" class="fa fa-download"></i> 导入所有</button>
+      <button class="btn btn-default controls" ng-click="exportAll()"><i aria-hidden="true" class="fa fa-download"></i> 导出所有</button>
       <button file-upload="importAll(fileContents)" class="btn btn-default controls" ng-click><i aria-hidden="true" class="fa fa-upload"></i> 导入</button>
     </div>
     <p>
       编辑保存的各种系统对象，比如搜索语句。 每一页最多只能显示100个对象，请使用过滤条件缩小要编辑的对象范围。
     </p>
     <form role="form">
-      <input aria-label="Filter" ng-model="advancedFilter" class="form-control span12" type="text" placeholder="Filter"/>
+      <input aria-label="名称" ng-model="advancedFilter" class="form-control span12" type="text" placeholder="请输入名称..."/>
     </form>
 
     <ul class="nav nav-tabs">
@@ -42,6 +42,7 @@
               <button
                 ng-click="edit(service, item)"
                 class="btn btn-default"
+                tooltip="编辑"
                 aria-label="Edit">
                 <span class="sr-only">编辑</span>
                 <i aria-hidden="true" class="fa fa-pencil"></i>
@@ -50,6 +51,7 @@
               <button
                 ng-click="open(item)"
                 class="btn btn-info"
+                tooltip="隐藏"
                 aria-label="Hide">
                 <span class="sr-only">隐藏</span>
                 <i aria-hidden="true" class="fa fa-eye"></i>

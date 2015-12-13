@@ -1,6 +1,6 @@
 <div>
   <label>
-    Y-Axis Scale
+    Y轴缩放
   </label>
   <select class="form-control" ng-model="vis.params.scale" ng-options="mode for mode in vis.type.params.scales"></select>
 <!-- vis type specific options -->
@@ -9,13 +9,13 @@
   <div>
     <label>
       <input type="checkbox" value="{{drawLinesBetweenPoints}}" ng-disabled="!vis.params.showCircles" ng-model="vis.params.drawLinesBetweenPoints" name="drawLinesBetweenPoints" ng-checked="vis.params.drawLinesBetweenPoints">
-      Show Connecting Lines
+      显示连接线
     </label>
   </div>
   <div>
     <label>
       <input type="checkbox" value="{{showCircles}}" ng-disabled="!vis.params.drawLinesBetweenPoints" ng-model="vis.params.showCircles" name="showCircles"  ng-checked="vis.params.showCircles">
-      Show Circles
+      显示圆圈
     </label>
   </div>
 </div>

@@ -8,7 +8,7 @@ define(function (require) {
   // edited by the object editor.
   require('plugins/settings/saved_object_registry').register({
     service: 'savedVisualizations',
-    title: 'visualizations'
+    title: '图表'
   });
 
   app.service('savedVisualizations', function (Promise, es, config, SavedVis, Private, Notifier, kbnUrl) {

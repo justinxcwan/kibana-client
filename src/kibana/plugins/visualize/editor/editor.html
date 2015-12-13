@@ -4,11 +4,11 @@
     <div class="fill bitty-modal-container">
       <div ng-if="vis.type.requiresSearch && $state.linked && !unlinking"
         ng-dblclick="unlink()"
-        tooltip="Double click to unlink this visualization from the saved search"
+        tooltip="双击解除图表和搜索条件的绑定"
         class="bitty-modal visualize-linked">
         <i aria-hidden="true" class="fa fa-link"></i>
         &nbsp;
-        This visualization is linked to a saved search:
+        本图表目前绑定了搜索条件
         <b>{{ savedVis.savedSearch.title }}</b>
       </div>
 
@@ -29,7 +29,7 @@
 
             <button
               class="btn btn-default" type="submit"
-              ng-disabled="true" aria-label="Search">
+              ng-disabled="true" aria-label="查找">
               <span aria-hidden="true" class="fa fa-search"></span>
             </button>
           </div>
@@ -49,7 +49,7 @@
               validate-query
               input-focus
               kbn-typeahead-input
-              placeholder="Search..."
+              placeholder="请输入图表名..."
               type="text"
               class="form-control">
 
@@ -65,51 +65,51 @@
     </div>
 
     <div class="button-group">
-      <kbn-tooltip text="New Visualization" placement="bottom" append-to-body="1">
-        <button ng-click="startOver()" aria-label="New Visualization"><i aria-hidden="true" class="fa fa-file-new-o"></i></button>
+      <kbn-tooltip text="新建图表" placement="bottom" append-to-body="1">
+        <button ng-click="startOver()" aria-label="新建图表"><i aria-hidden="true" class="fa fa-file-new-o"></i></button>
       </kbn-tooltip>
 
-      <kbn-tooltip text="Save Visualization" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="保存当前图表" placement="bottom" append-to-body="1">
         <!-- normal save -->
         <button
           ng-class="{active: configTemplate.is('save')}"
           ng-click="configTemplate.toggle('save')"
           ng-if="!editableVis.dirty"
           aria-expanded="{{ configTemplate.is('save') }}"
-          aria-label="Save Visualization">
+          aria-label="保存图表">
           <i aria-hidden="true" class="fa fa-save"></i>
         </button>
 
         <!-- save stub with tooltip -->
-        <button disabled ng-if="editableVis.dirty" tooltip="Apply or Discard your changes before saving" aria-label="Apply or Discard your changes before saving">
+        <button disabled ng-if="editableVis.dirty" tooltip="保存还是放弃当前图表的修改" aria-label="保存还是放弃当前图表的修改">
           <i aria-hidden="true" class="fa fa-save"></i>
         </button>
       </kbn-tooltip>
 
-      <kbn-tooltip text="Load Saved Visualization" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="打开已保存的图表" placement="bottom" append-to-body="1">
         <button
           ng-class="{active: configTemplate.is('load')}"
           ng-click="configTemplate.toggle('load')"
           aria-haspopup="true"
           aria-expanded="{{ configTemplate.is('load') }}"
-          aria-label="Load Saved Visualization">
+          aria-label="打开图表">
           <i aria-hidden="true" class="fa fa-folder-open-o"></i>
         </button>
       </kbn-tooltip>
-      <kbn-tooltip text="Share Visualization" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="分享此图表" placement="bottom" append-to-body="1">
         <button
           ng-class="{active: configTemplate.is('share')}"
           ng-click="configTemplate.toggle('share')"
           aria-haspopup="true"
           aria-expanded="{{ configTemplate.is('share') }}"
-          aria-label="Share Visualization">
+          aria-label="分享图表">
           <i aria-hidden="true" class="fa fa-external-link"></i>
         </button>
       </kbn-tooltip>
-      <kbn-tooltip text="Refresh" placement="bottom" append-to-body="1">
+      <kbn-tooltip text="刷新图表内容" placement="bottom" append-to-body="1">
         <button
           ng-click="fetch()"
-          aria-label="Refresh">
+          aria-label="刷新">
           <i aria-hidden="true" class="fa fa-refresh"></i>
         </button>
       </kbn-tooltip>

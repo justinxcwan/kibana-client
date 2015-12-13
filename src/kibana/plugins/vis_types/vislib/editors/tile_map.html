@@ -1,6 +1,6 @@
 <!-- vis type specific options -->
 <div class="form-group">
-  <label>Map type</label>
+  <label>地图类型</label>
     <select name="agg"
     class="form-control"
     ng-model="vis.params.mapType"
@@ -13,7 +13,7 @@
 <div ng-if="vis.params.mapType === 'Heatmap'" class="form-group">
   <div>
     <label>
-      Radius
+      半径
       &nbsp;<kbn-info placement="right" info="Size of heatmap dots. Default: 25"></kbn-info>
     </label>
     <div class="vis-editor-agg-form-row">
@@ -34,7 +34,7 @@
   </div>
   <div>
     <label>
-      Blur
+      边缘虚化
       &nbsp;<kbn-info placement="right" info="Amount of blur applied to dots. Default: 15"></kbn-info>
     </label>
     <div class="vis-editor-agg-form-row">
@@ -55,7 +55,7 @@
   </div>
   <div>
     <label>
-      Maximum zoom
+      最大缩放比例
       &nbsp;<kbn-info placement="right" info="Map zoom at which all dots are displayed at full intensity. Default: 16"></kbn-info>
     </label>
     <div class="vis-editor-agg-form-row">
@@ -76,7 +76,7 @@
   </div>
   <div>
     <label>
-      Minimum opacity
+      最小透明度
       &nbsp;<kbn-info placement="right" info="Minimum opacity of dots. Default: 0.1"></kbn-info>
     </label>
     <div class="vis-editor-agg-form-row">
@@ -99,7 +99,7 @@
   <div class="form-group">
     <label>
       <input type="checkbox" ng-model="vis.params.addTooltip">
-      Show Tooltip
+      显示提示信息
     </label>
   </div>
 </div>
@@ -111,7 +111,7 @@
     ng-disabled="!vis.type.params.canDesaturate"
     ng-model="vis.params.isDesaturated">
 
-    Desaturate map tiles
+    使用低饱和度地图
 
     <kbn-info info="Reduce the vibrancy of tile colors, this does not work in any version of Internet Explorer"
   </label>

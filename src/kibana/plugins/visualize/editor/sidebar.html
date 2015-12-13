@@ -14,10 +14,10 @@
         <!-- tabs -->
         <ul class="nav navbar-nav">
           <li ng-class="{active: sidebar.section == 'data'}" ng-show="vis.type.schemas.metrics">
-            <a class="navbar-link active" ng-click="sidebar.section='data'">Data</a>
+            <a class="navbar-link active" ng-click="sidebar.section='data'">配置数据</a>
           </li>
           <li ng-class="{active: sidebar.section == 'options'}">
-            <a class="navbar-link" ng-click="sidebar.section='options'">Options</a>
+            <a class="navbar-link" ng-click="sidebar.section='options'">配置显示</a>
           </li>
         </ul>
 
@@ -30,7 +30,7 @@
               <i class="fa fa-warning"></i>
             </a>
           </li>
-          <li tooltip="Apply changes" tooltip-placement="bottom" tooltip-popup-delay="400" tooltip-append-to-body="1">
+          <li tooltip="应用当前配置" tooltip-placement="bottom" tooltip-popup-delay="400" tooltip-append-to-body="1">
             <button class="btn-success navbar-btn-link"
               type="submit"
               ng-disabled="!vis.dirty">
@@ -38,7 +38,7 @@
               <i class="fa fa-play"></i>
             </button>
           </li>
-          <li tooltip="Discard changes" tooltip-placement="bottom" tooltip-popup-delay="400" tooltip-append-to-body="1">
+          <li tooltip="放弃修改配置" tooltip-placement="bottom" tooltip-popup-delay="400" tooltip-append-to-body="1">
             <button class="btn-default navbar-btn-link"
               ng-disabled="!vis.dirty"
               ng-click="resetEditableVis()">

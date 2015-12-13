@@ -1,17 +1,17 @@
 <h1>
-  Select a search source
-  <span class="pull-right label label-default hidden-xs">Step 2</span>
-  <span class="label label-default visible-xs">Step 2</span>
+  选择搜索条件
+  <span class="pull-right label label-default hidden-xs">第二步</span>
+  <span class="label label-default visible-xs">第二步</span>
 </h1>
 <ul class="list-group list-group-menu" ng-switch on="stepTwoMode">
   <li ng-click="stepTwoMode='new'"
       ng-class="{'active': stepTwoMode=='new'}"
       class="list-group-item list-group-menu-item">
-    From a new search
+    新建搜索条件
   </li>
   <li class="list-group-item" ng-switch-when="new">
     <!-- Index patterns -->
-    Select an index pattern
+    选择索引
     <div class="form-group">
       <select
               class="form-control"
@@ -24,12 +24,12 @@
   <li ng-click="stepTwoMode='saved'"
       ng-class="{'active': stepTwoMode=='saved'}"
       class="list-group-item list-group-menu-item">
-    From a saved search
+    打开已保存的搜索条件
   </li>
   <li class="list-group-item" ng-switch-when="saved">
     <!-- Saved searches -->
     <saved-object-finder
-            title="Saved Searches"
+            title="已保存的搜索条件"
             type="searches"
             make-url="step2WithSearchUrl">
     </saved-object-finder>

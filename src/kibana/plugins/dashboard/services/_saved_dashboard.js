@@ -21,7 +21,7 @@ define(function (require) {
 
         // default values that will get assigned if the doc is new
         defaults: {
-          title: 'New Dashboard',
+          title: '未命名的仪表盘',
           hits: 0,
           description: '',
           panelsJSON: '[]',
