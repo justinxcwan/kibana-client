@@ -18,30 +18,14 @@ module.exports = function (grunt) {
 
         optimize: 'none',
         optimizeCss: 'none',
-        optimizeAllPluginResources: false,
+        // optimizeAllPluginResources: false,
+        skipDirOptimize: true,
 
-        removeCombined: true,
-        findNestedDependencies: true,
-        normalizeDirDefines: 'all',
-        inlineText: true,
-        skipPragmas: true,
-
-        // uglify2: {
-        //     //Example of a specialized config. If you are fine
-        //     //with the default options, no need to specify
-        //     //any of these properties.
-        //     output: {
-        //         beautify: true
-        //     },
-        //     compress: {
-        //         sequences: false,
-        //         global_defs: {
-        //             DEBUG: false
-        //         }
-        //     },
-        //     warnings: true,
-        //     mangle: false
-        // },
+        // removeCombined: true,
+        // findNestedDependencies: true,
+        // normalizeDirDefines: 'all',
+        // inlineText: true,
+        // skipPragmas: true,
 
         done: function (done, output) {
           var analysis = require('rjs-build-analysis');
@@ -76,11 +60,11 @@ module.exports = function (grunt) {
 
           var args = ['-o', join(path, 'index.min.js'), join(path, 'index.js')];
 
-          var Promise = require('bluebird');
+          // var Promise = require('bluebird');
           var child_process = require('child_process');
-          var execFile = Promise.promisify(child_process.execFile);
+          // var execFileSync = Promise.promisify(child_process.execFileSync);
           
-          execFile('uglifyjs', args);
+          child_process.execFileSync('uglifyjs', args);
 
           done();
         }
