@@ -52,7 +52,8 @@ module.exports = function (grunt) {
             }
           }
 
-          //TODO Temporary hacks to uglify index.js
+          //TODO Temporary hacks to uglify index.js, othervise setting optimize:'uglify2' 
+          // results in broken index.js
           var join = require('path').join;
           var path = join(grunt.config.get('build'), 'kibana', 'public');
 
@@ -65,6 +66,7 @@ module.exports = function (grunt) {
           // var execFileSync = Promise.promisify(child_process.execFileSync);
           
           child_process.execFileSync('uglifyjs', args);
+          child_process.execFileSync('/bin/mv', args.slice(1));
 
           done();
         }
