@@ -8,7 +8,7 @@ define(function (require) {
 
     return [
       {
-        display: 'Auto',
+        display: '自动',
         val: 'auto',
         enabled: function (agg) {
           // not only do we need a time field, but the selected field needs
@@ -17,35 +17,35 @@ define(function (require) {
         }
       },
       {
-        display: 'Second',
+        display: '秒',
         val: 's'
       },
       {
-        display: 'Minute',
+        display: '分钟',
         val: 'm'
       },
       {
-        display: 'Hourly',
+        display: '小时',
         val: 'h'
       },
       {
-        display: 'Daily',
+        display: '天',
         val: 'd'
       },
       {
-        display: 'Weekly',
+        display: '周',
         val: 'w'
       },
       {
-        display: 'Monthly',
+        display: '月',
         val: 'M'
       },
       {
-        display: 'Yearly',
+        display: '年',
         val: 'y'
       },
       {
-        display: 'Custom',
+        display: '自定义',
         val: 'custom'
       }
     ];
