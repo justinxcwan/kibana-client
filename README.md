@@ -1,45 +1,68 @@
-# Kibana 4.1.3
+# Kibana 4.1.3 无nodejs server版安装方法
 
-[![Build Status](https://travis-ci.org/elastic/kibana.svg?branch=master)](https://travis-ci.org/elastic/kibana?branch=master)
+### 编译需要准备好的环境
+```sh
+$ sudo apt-get update
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ sudo npm install -g grunt-cli bower uglify-js
+```
 
-Kibana is an open source ([Apache Licensed](https://github.com/elastic/kibana/blob/master/LICENSE.md)), browser based analytics and search dashboard for Elasticsearch. Kibana is a snap to setup and start using. Kibana strives to be easy to get started with, while also being flexible and powerful, just like Elasticsearch.
+### 安装离线地图
+```sh
+$ tar zxf map.tar.gz
+```
+或者直接改 map_tile.js 把当前离线地图配置
+```sh
+kibana-client$ cat ./src/kibana/components/vislib/visualizations/tile_map.js
+```
+```java
+          ...
+          var tileLayer = L.tileLayer('/map/{z}/{x}/{y}.png');
+          // var tileLayer = L.tileLayer('http://emap{s}.mapabc.com/mapabc/maptile?&x={x}&y={y}&z={z}');
+          ...
+```
+改回成原始的mapabc的在线地图。对接国内其他地图库可以把tileLayer改成相应的URL格式，或者直接使用leaflet-chinese库。
+```java
+          ...
+          // var tileLayer = L.tileLayer('/map/{z}/{x}/{y}.png');
+          var tileLayer = L.tileLayer('http://emap{s}.mapabc.com/mapabc/maptile?&x={x}&y={y}&z={z}');
+          ...
+```
 
-## Requirements
+在nginx中加上elasticsearch和map配置
+```conf
+    ...
+    gzip  on;
+    gzip_comp_level 9;
 
-- Elasticsearch version 1.4.4 or later
-- Kibana binary package
+    server {
+        listen       80;
+        server_name  localhost;
 
-## Installation
+        location / {
+            root /home/xxx/kibana-client/build/dist/kibana/src/public/;
+            index  index.html index.htm;
+        }
+        
+        location /map/ {
+            alias   /home/xxx/map/;
+        }
 
-* Download: [http://www.elastic.co/downloads/kibana](http://www.elastic.co/downloads/kibana)
-* Run `bin/kibana` on unix, or `bin\kibana.bat` on Windows.
-* Visit [http://localhost:5601](http://localhost:5601)
+        location /elasticsearch/ {
+            rewrite ^/elasticsearch/?(.*)$ /$1 break;    
+            proxy_pass  http://127.0.0.1:9200;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
 
-## Quick Start
+    }
+    ...        
+```
 
-You're up and running! Fantastic! Kibana is now running on port 5601, so point your browser at http://YOURDOMAIN.com:5601.
-
-The first screen you arrive at will ask you to configure an **index pattern**. An index pattern describes to Kibana how to access your data. We make the guess that you're working with log data, and we hope (because it's awesome) that you're working with Logstash. By default, we fill in `logstash-*` as your index pattern, thus the only thing you need to do is select which field contains the timestamp you'd like to use. Kibana reads your Elasticsearch mapping to find your time fields - select one from the list and hit *Create*.
-
-**Tip:** there's an optimization in the way of the *Use event times to create index names* option. Since Logstash creates an index every day, Kibana uses that fact to only search indices that could possibly contain data in your selected time range.
-
-Congratulations, you have an index pattern! You should now be looking at a paginated list of the fields in your index or indices, as well as some informative data about them. Kibana has automatically set this new index pattern as your default index pattern. If you'd like to know more about index patterns, pop into to the [Settings](#settings) section of the documentation.
-
-**Did you know:** Both *indices* and *indexes* are acceptable plural forms of the word *index*. Knowledge is power.
-
-Now that you've configured an index pattern, you're ready to hop over to the [Discover](#discover) screen and try out a few searches. Click on **Discover** in the navigation bar at the top of the screen.
-
-## Documentation
-
-Visit [Elastic.co](http://www.elastic.co/guide/en/kibana/current/index.html) for the full Kibana documentation.
-
-## Snapshot Builds
-
-For the daring, snapshot builds are available. These builds are created after each commit to the master branch, and therefore are not something you should run in production.
-
-| platform |  |  |
-| --- | --- | --- |
-| OSX | [tar](http://download.elastic.co/kibana/kibana/kibana-4.1.3-darwin-x64.tar.gz) | [zip](http://download.elastic.co/kibana/kibana/kibana-4.1.3-darwin-x64.zip) |
-| Linux x64 | [tar](http://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.tar.gz) | [zip](http://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.zip) |
-| Linux x86 | [tar](http://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x86.tar.gz) | [zip](http://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x86.zip) |
-| Windows | [tar](http://download.elastic.co/kibana/kibana/kibana-4.1.3-windows.tar.gz) | [zip](http://download.elastic.co/kibana/kibana/kibana-4.1.3-windows.zip) |
+### 每次编译方法
+```sh
+kibana-client$ npm install && bower install
+kibana-client$ grunt release
+```
