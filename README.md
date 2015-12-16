@@ -1,5 +1,7 @@
 # Kibana 4.1.3 无nodejs server版安装方法
 
+建议使用nodejs 4.1.0，bower版本 1.5.2。nodejs 5测试发现问题。
+
 ### 编译需要准备好的环境
 ```sh
 $ sudo apt-get update
