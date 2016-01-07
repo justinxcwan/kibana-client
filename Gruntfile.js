@@ -1,7 +1,5 @@
 module.exports = function (grunt) {
 
-  require('jit-grunt')(grunt);
-  
   // set the config once before calling load-grunt-config
   // and once durring so that we have access to it via
   // grunt.config.get() within the config files
@@ -60,8 +58,6 @@ module.exports = function (grunt) {
   };
 
   grunt.config.merge(config);
-
-  require('time-grunt')(grunt);
 
   var dirname = require('path').dirname;
   var indexFiles = grunt.file.expand({ cwd: 'src/kibana/plugins' }, [
