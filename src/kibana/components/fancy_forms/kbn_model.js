@@ -26,9 +26,9 @@ define(function (require) {
     var ngModel = this;
 
     // verify that angular works the way we are assuming it does
-    if (angular.version.full !== '1.2.28') {
-      throw new Error('angular version has updated but KbnModelController has not!');
-    }
+    // if (angular.version.full !== '1.2.28') {
+    //   throw new Error('angular version has updated but KbnModelController has not!');
+    // }
 
     /**
      * Get the form a model belongs to

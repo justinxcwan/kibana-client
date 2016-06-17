@@ -1,4 +1,4 @@
-define(function (require) {
+define(['require','errors'],function (require) {
   return function EnsureSomeIndexPatternsFn(Private, Notifier, $location, kbnUrl) {
     var errors = require('errors');
     var notify = new Notifier();

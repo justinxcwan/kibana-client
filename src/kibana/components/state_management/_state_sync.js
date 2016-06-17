@@ -1,4 +1,4 @@
-define(function (require) {
+define(['require','angular','lodash','utils/rison'],function (require) {
 
   var angular = require('angular');
   var _ = require('lodash');

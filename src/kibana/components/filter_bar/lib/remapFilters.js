@@ -1,4 +1,4 @@
-define(function (require) {
+define(['require'],function (require) {
   'use strict';
   /**
    * Remap the filter from the intermediary back to it's original.
